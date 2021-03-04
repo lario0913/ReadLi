@@ -1,12 +1,21 @@
 import React, {useState} from 'react'
-import {useQuery} from '@apollo/client'
-import {getBooksQuery} from '../queries/queries'
+import {useLazyQuery, useQuery} from '@apollo/client'
+import {getBookQuery, getBooksQuery} from '../queries/queries'
 import BookDetails from './BookDetails'
+// import BookDetails from './BookDetails'
 
 
 const BookList = () => {
     const {data, loading} = useQuery(getBooksQuery)
     const [select, setSelect] = useState(null)
+    const [book] = useLazyQuery(getBookQuery)
+    const detail = useLazyQuery(getBookQuery)
+
+    const getDetail = (id) => {
+        e.preventDefault()
+       console.log(id)
+        
+    }
     
     if(loading){
         return <div>Loading Books</div>
@@ -19,7 +28,7 @@ const BookList = () => {
                     data.books.map((book) => {
                         return (
                             <li key={book.id}
-                                onClick={e => setSelect(book.id)}
+                                onClick={getDetail(book.id)}
                             >
                                 {book.name}
                             </li>
@@ -27,7 +36,9 @@ const BookList = () => {
                     })
                 }
             </ul>
-            <BookDetails bookId={select} />
+            {/* <BookDetails bookId={select} /> */}
+            <h2>Details Here</h2>
+            {/* {console.log(detail)} */}
         </div>
     )
 }
