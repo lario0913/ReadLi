@@ -8,7 +8,7 @@ class BookDetails extends Component {
         const {book} = this.props.data
         if(book){
             return(
-                <div>
+                <div className="book__details">
                     <h2>{book.name}</h2>
                     <p>{book.genre}</p>
                     <p>{book.author.name}</p>

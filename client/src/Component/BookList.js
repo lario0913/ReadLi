@@ -33,7 +33,7 @@ class BookList extends Component{
     render(){
         return (
             <div>
-                <ul className="book-list">
+                <ul className="book__list">
                     {this.displayBooks()}
                 </ul>
        
@@ -41,6 +41,7 @@ class BookList extends Component{
             </div>
         )
     }  
+
 }
 
 export default graphql(getBooksQuery)(BookList)
