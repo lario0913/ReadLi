@@ -1,26 +1,25 @@
-import { useQuery } from '@apollo/client'
+// import { useLazyQuery } from '@apollo/client'
 import React from 'react'
 import {getBookQuery} from '../queries/queries'
+import {graphql} from 'react-apollo'
 
-const BookDetails = ({bookId}) => {
-    // const {data, loading} = getBookQuery
-    const [book] = useQuery(getBookQuery)
-    const getBook = id => {
-        return (
-            book({
-                variables:{
-                    id: id
-                }
-            })
-        )
-    }
-    console.log(getBook(bookId))
 
+const BookDetails = (props) => {
+   
     return (
         <div className="book__details">
             <h3>Output  Books Details here</h3>
+            {console.log(props.bookId)}
         </div>
     )
 }
 
-export default BookDetails
+export default graphql(getBookQuery, {
+    options: props =>{
+        return{
+            variables:{
+                id: props.bookId
+            }
+        }
+    }
+})(BookDetails)
