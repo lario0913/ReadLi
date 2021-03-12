@@ -9,7 +9,6 @@ const app = express();
 // Allow cors origin request
 app.use(cors())
 
-// "C:\Users\user\mongodb\bin\mongod.exe" --dbpath="C:\Users\user\mongo"
 
 // Connect to database
 mongoose.connect('mongodb+srv://lario:kb19c0914@cluster0.0gci4.mongodb.net/test', {
