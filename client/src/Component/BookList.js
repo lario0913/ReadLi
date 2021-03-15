@@ -3,8 +3,6 @@ import {graphql} from 'react-apollo'
 import { getBooksQuery } from '../queries/queries'
 import BookDetails from './BookDetails'
 
-
-
 class BookList extends Component{
     constructor(props) {
         super(props)
@@ -13,7 +11,6 @@ class BookList extends Component{
              selected:null
         }
     }
-    
 
     displayBooks(){
         const {books, loading} = this.props.data
